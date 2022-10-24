@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    cout << "Hello World!\n";
+
+    //int a = 1, b = 2, c = 1; //delta = 0
+    int a = 1, b = 2, c = -1; //delta > 0
+    //int a = 1, b = 2, c = 2; //delta < 0
+
+
+
+    int delta = b * b - (4 * a * c);
+
+
+    if (delta < 0) {
+    
+        cout << delta << endl;
+        cout << "Delta mniejsza od zera brak argumentów rzeczywistych";
+    }
+    else if(delta>0) {
+    
+        cout << delta << endl;
+        double x1, x2;
+
+       double pierwiastekzdelty = sqrt(delta);
+
+       x1 = (-b + pierwiastekzdelty)/(2 * a);
+       x2 = (-b - pierwiastekzdelty)/(2 * a);
+
+       cout << x1 << " " << x2;
+
+    }
+    else {
+        
+        cout << delta << endl;
+
+        double x = (-b) / (2 * a);
+
+            cout << x;
+
+    }
+
+}
