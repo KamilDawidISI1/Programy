@@ -58,7 +58,22 @@ int max(vector<int>tab) {
 		wynik = tab[1];
 	}
 
-	for (int j = 0; j < tab.size(); j++)
+	for (int j = 2; j < tab.size(); j++)
+	{
+		if (tab[j] > wynik)
+		{
+			wynik = tab[j];
+		}
+	}
+
+	return wynik;
+}
+
+funkcja do szukania ulepszona 
+int max(vector<int>tab) {
+	int wynik = tab[0];
+
+	for (int j = 1; j < tab.size(); j++)
 	{
 		if (tab[j] > wynik)
 		{
