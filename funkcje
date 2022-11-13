@@ -118,7 +118,6 @@ int max(vector<int>tab) {
 
 int main()
 {
-	cout << "Zajęcia 4" << endl;
 	vector<int>tab = { 8, 5, 4 , 3 };
 
 	wypisz(tab);
