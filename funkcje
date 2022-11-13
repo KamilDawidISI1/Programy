@@ -83,3 +83,45 @@ int max(vector<int>tab) {
 
 	return wynik;
 }
+
+-----------------------------------------------------------------
+
+cały program
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+
+void wypisz(vector<int>tab) {
+	for (int i = 0; i < tab.size(); i++)
+	{
+		cout << tab[i] << ", ";
+	}
+	cout << endl;
+}
+
+int max(vector<int>tab) {
+	int wynik = tab[0];
+
+	for (int j = 1; j < tab.size(); j++)
+	{
+		if (tab[j] > wynik)
+		{
+			wynik = tab[j];
+		}
+	}
+
+	return wynik;
+}
+
+
+int main()
+{
+	cout << "Zajęcia 4" << endl;
+	vector<int>tab = { 8, 5, 4 , 3 };
+
+	wypisz(tab);
+    cout << max(tab);
+
+}
