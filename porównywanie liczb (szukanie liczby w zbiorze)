@@ -40,4 +40,86 @@ int main()
 }
 
 ------------------------------------------------------------------------------------
+z użyciem bool
+
+    bool wynik = false;
+    for (int i = 0; i < tab.size(); i++) {
+        if (tab[i] == element) {
+            wynik = true;
+            break;
+        }
+    }
+
+    cout << wynik;
+    
+    -----------------------------------------------------------
+ jako funkcja poza mainem
+ 
+ #include <iostream>
+#include <vector>
+
+using namespace std;
+
+void wypisz(vector<int>tab) {
+    for (int i = 0; i < tab.size(); i++) {
+        cout << tab[i] << ", ";
+    }
+    cout << endl;
+}
+
+int max(vector<int>tab) {
+    int wynik = tab[0];
+    for (int j = 1; j < tab.size(); j++) {
+        if (tab[j] > wynik) {
+            wynik = tab[j];
+        }
+    }
+    return wynik;
+}
+
+
+bool czyNalezy(vector<int>tab, int element) {
+    bool wynik = false;
+    for (int i = 0; i < tab.size(); i++) {
+        if (tab[i] == element) {
+            wynik = true;
+            break;
+        }
+    }
+
+    return wynik;
+}
+
+int main()
+{
+    cout << "Zajecia 5\n";
+    vector<int>tab = {8,1,2,3,8,5};
+    int element = 8;
+
+
+    wypisz(tab);
+    cout << element << endl;
+
+    bool wynik = czyNalezy(tab, element);
+    cout << wynik;
+
+   
+}
+
+
+----------------------------------------------
+upgrade boola funkcji zewnętrznej
+
+bool czyNalezy(vector<int>tab, int element) {
+   
+    for (int i = 0; i < tab.size(); i++) {
+        if (tab[i] == element) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
 
