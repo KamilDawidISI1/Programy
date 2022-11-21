@@ -121,5 +121,102 @@ bool czyNalezy(vector<int>tab, int element) {
     return false;
 }
 
+------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void wypisz(vector<int>tab) {
+    for (int i = 0; i < tab.size(); i++) {
+        cout << tab[i] << ", ";
+    }
+    cout << endl;
+}
+
+int max(vector<int>tab) {
+    int wynik = tab[0];
+    for (int j = 1; j < tab.size(); j++) {
+        if (tab[j] > wynik) {
+            wynik = tab[j];
+        }
+    }
+    return wynik;
+}
 
 
+bool czyNalezy(vector<int>tab, int element) {
+    bool wynik = false;
+    for (int i = 0; i < tab.size(); i++) {
+        if (tab[i] == element) {
+            wynik = true;
+            break;
+        }
+    }
+
+    return wynik;
+}
+
+int main()
+{
+    cout << "Zajecia 5\n";
+    vector<int>tab = {8,1,2,3,8,5};
+    int element = 9;
+
+
+    wypisz(tab);
+    cout << element << endl;
+    
+    cout << max(tab) << endl;
+
+    bool wynik = czyNalezy(tab, element);
+    cout << wynik;
+
+
+}
+
+------------------------------------------------------
+czas 6:31 
+#include <iostream>
+#include <vector> 
+
+using namespace std;
+
+void wypisz(vector<int>tab){
+    for(int i=0; i<tab.size(); i++){
+        cout << tab[i] << ", ";
+    }
+    cout << endl;
+}
+
+int max(vector<int>tab){
+    int wynik = tab[0];
+    for(int i = 1; i<tab.size(); i++){
+        if(tab[i]>wynik){
+            wynik = tab[i];
+        }
+    }
+    return wynik;
+}
+
+bool czyNalezy(vector<int>tab, int element){
+    for(int i=0; i<tab.size(); i++){
+        if(tab[i] == element){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+int main()
+{
+  vector<int>tab = {1,2,3,4,5,6,7,8};
+    int element = 1;    
+    
+    wypisz(tab);
+    cout << max(tab) << endl;
+    cout << czyNalezy(tab, element) << endl;
+    return 0;
+}
