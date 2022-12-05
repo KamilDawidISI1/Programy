@@ -98,3 +98,241 @@ int main()
     
     return 0;
 }
+
+
+
+--------------------------------------------------------------
+1. samodzielna
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void wypisz(vector<int>tab){
+    for(int i=0;i<tab.size();i++){
+        cout << tab[i] << ", ";
+    }
+    cout << endl;
+}
+int max(vector<int>tab){
+    int wynik = tab[0];
+    for(int i=1;i<tab.size();i++){
+        if(tab[i]>wynik){
+            wynik = tab[i];
+        }
+    }
+    return wynik;
+}
+
+bool czynalezy(vector<int>tab, int element){
+    for(int i=0;i<tab.size();i++){
+        if(tab[i] == element){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool czyzawiera(vector<int>tab1, vector<int>tab2){
+    for(int i=0;i<tab2.size();i++){
+        if(!czynalezy(tab1, tab2[i])){
+            return false;
+        }
+    }
+    return true;
+}
+
+vector<int> unikalnosc(vector<int>tab){
+    vector<int>wynik;
+    for(int i=0;i<tab.size();i++){
+        if(!czynalezy(wynik, tab[i])){
+            wynik.push_back(tab[i]);
+        }
+    }
+    return wynik;
+}
+
+
+int main()
+{
+    vector<int>tab1 = {7, 4, 1, 3, 8, 2};
+    vector<int>tab2 = {2, 4, 7};
+    vector<int>tab3 = {8, 5, 1, 5, 3 ,1, 7, 4};
+    
+    int element = 3;
+    
+    wypisz(tab1);
+    wypisz(tab2);
+    
+    cout << max(tab1) << endl;
+    cout <<czynalezy(tab1, element) << endl;
+    cout <<czynalezy(tab2, element) << endl;
+    
+    cout << czyzawiera(tab1, tab2) << endl;
+    
+    vector<int>tabu = unikalnosc(tab3);
+
+
+    wypisz(tabu);
+
+
+    return 0;
+}
+
+---------------------------------------------------------------------
+2.samodzielna
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void wypisz(vector<int>tab){
+    for(int i=0;i<tab.size();i++){
+        cout << tab[i] << ", ";
+    }
+    cout << endl;
+}
+
+int max(vector<int>tab){
+    int wynik=tab[0];
+    for(int i=1;i<tab.size(); i++){
+        if(tab[i]>wynik){
+            wynik = tab[i];
+        }
+    }
+    return wynik;
+}
+
+bool czynalezy(vector<int>tab, int element){
+    for(int i=0;i<tab.size();i++){
+        if(tab[i] == element){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool czyzawiera(vector<int>tab1, vector<int>tab2){
+    for(int i=0;i<tab2.size();i++){
+        if(!czynalezy(tab1, tab2[i])){
+            return false;
+        }
+    }
+    return true;
+}
+
+vector<int> unikalnosc(vector<int>tab){
+    vector<int>wynik;
+    for(int i=0;i<tab.size();i++){
+        if(!czynalezy(wynik, tab[i])){
+            wynik.push_back(tab[i]);
+        }
+    }
+    return wynik;
+}
+
+
+int main()
+{
+    vector<int>tab1 = {4, 3, 6, 7, 5, 8, 9};
+    vector<int>tab2 = {3, 5, 4};
+    vector<int>tab3 = {3, 2, 3, 2, 5, 6, 4, 5, 3};
+    
+    int element = 6;
+    
+    wypisz(tab1);
+    wypisz(tab2);
+    
+    cout << max(tab1) << endl;
+    
+    cout << czynalezy(tab1, element)<< endl;
+    cout << czynalezy(tab2, element)<< endl;
+    
+    cout << czyzawiera(tab1, tab2)<< endl;
+    
+    wypisz(tab3);
+    vector<int>tab3u = unikalnosc(tab3);
+    wypisz(tab3u);
+
+    return 0;
+}
+-----------------------------------------------------------------
+3.samodzielna czas: 9:49
+
+#include <iostream>
+#include <vector> 
+
+using namespace std;
+
+void wypisz(vector<int>tab){
+    for(int i=0;i<tab.size();i++){
+        cout << tab[i] << ", ";
+    }
+    cout << endl;
+}
+
+int max(vector<int>tab){
+    int wynik = tab[0];
+    for(int i=1;i<tab.size();i++){
+        if(tab[i]>wynik){
+            wynik=tab[i];
+        }
+    }
+    return wynik;
+}
+
+bool czynalezy(vector<int>tab, int element){
+    for(int i=0;i<tab.size();i++){
+        if(tab[i] == element){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool czyzawiera(vector<int>tab1, vector<int>tab2){
+    for(int i=0;i<tab2.size();i++){
+        if(!czynalezy(tab1, tab2[i])){
+            return false;
+        }
+    }
+    return true;
+}
+
+vector<int> unikalnosc(vector<int>tab){
+    vector<int>wynik;
+    for(int i=0;i<tab.size();i++){
+        if(!czynalezy(wynik, tab[i])){
+            wynik.push_back(tab[i]);
+        }
+    }
+    return wynik;
+}
+
+
+int main()
+{
+    vector<int>tab1 = {7, 5, 8, 4, 5, 6};
+    vector<int>tab2 = {7, 5, 4};
+    vector<int>tab3 = {7, 6, 5, 8, 4, 8, 5, 6, 7};
+    
+    int element =8;
+    
+    wypisz(tab1);
+    wypisz(tab2);
+    
+    
+    cout<< max(tab1) << endl;
+    cout << czynalezy(tab1, element) << endl;
+    cout << czynalezy(tab2, element) << endl;
+    
+    cout << czyzawiera(tab1, tab2) << endl;
+    
+    wypisz(tab3);
+    vector<int>tab3u=unikalnosc(tab3);
+    wypisz(tab3u);
+    
+    
+    
+    return 0;
+}
