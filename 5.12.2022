@@ -118,3 +118,222 @@ int main()
 }
 
 //następna wejściówka wypisz, max, czynalezy, czyzawiera, unikalnosc, 6-punktow z 28.11.2022(jak napisac funkcje), suma, srednia, podzielnosc
+
+
+------------------------------------------------------------------------------------------------------
+
+#include <iostream>
+#include <vector> 
+
+using namespace std;
+
+
+void wypisz(vector<int>tab){
+    for(int i =0;i<tab.size();i++){
+        cout << tab[i] << ", ";
+    }
+    cout << endl;
+}
+
+int max(vector<int>tab){
+    int wynik = tab[0];
+    for(int i =1;i<tab.size();i++){
+        if(tab[i]>wynik){
+            wynik = tab[i];
+        }
+    }
+    return wynik;
+}
+
+bool czynalezy(vector<int>tab, int element){
+    for(int i =0;i<tab.size();i++){
+        if(tab[i] == element){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool czyzawiera(vector<int>tab1, vector<int>tab2){
+    for(int i =0;i<tab2.size();i++){
+        if(!czynalezy(tab1, tab2[i])){
+            return false;
+        }
+    }
+    return true;
+}
+
+vector<int> unikalnosc(vector<int>tab){
+    vector<int>wynik;
+    
+    for(int i =0;i<tab.size();i++){
+        if(!czynalezy(wynik, tab[i])){
+            wynik.push_back(tab[i]);
+        }
+    }
+    return wynik;
+}
+
+int sumowanie(vector<int>tab){
+    int wynik = 0;
+    for(int i =0;i<tab.size();i++){
+       wynik += tab[i]; 
+    }
+    return wynik;
+}
+
+float avg(vector<int>tab){
+    float wynik = sumowanie(tab);
+    return wynik/tab.size();
+}
+
+vector<int> podzielnosc(vector<int>tab, int dzielnik, int reszta=0){
+    vector<int>wynik;
+    for(int i =0;i<tab.size();i++){
+        if(tab[i]%dzielnik == reszta){
+            wynik.push_back(tab[i]);
+        }
+    }
+    return wynik;
+}
+
+int main()
+{
+    
+    vector<int>tab1 = {5,3,4,5,2,6,8,6,4};
+    vector<int>tab2 = {5,6,8};
+    int element = 4;
+    
+    wypisz(tab1);
+    cout << max(tab1) << endl;
+    cout << czynalezy(tab1, element) << endl;
+    cout << czynalezy(tab2, element) << endl;
+    cout << czyzawiera(tab1, tab2) << endl;
+    
+    vector<int>tab1u = unikalnosc(tab1);
+    wypisz(tab1u);
+    
+    cout << sumowanie(tab1) << endl;
+    cout << avg(tab1) << endl;
+    
+    vector<int>tab1p=podzielnosc(tab1, 4);
+    wypisz(tab1p);
+    
+    
+}
+
+// 1.wymyśleć przykład
+// 2.sprawdzić czy przykład jest kompletny
+// 3.sformalizowanie parametru
+// 4.sformalizowanie przykładu
+// 5.nagłówek funkcji
+// 6.nie wiesz co pisać wróć do przykładu
+
+
+----------------------------------------------------------------------
+czas 16 min
+
+#include <iostream>
+#include <vector> 
+
+using namespace std;
+
+void wypisz(vector<int>tab){
+    for(int i=0;i<tab.size();i++){
+        cout << tab[i] << ", ";
+    }
+    cout<< endl;
+}
+
+int max(vector<int>tab){
+    int wynik = tab[0];
+    for(int i=1;i<tab.size();i++){
+        if(tab[i]>wynik){
+            wynik = tab[i];
+        }
+    }
+    return wynik;
+}
+
+bool czynalezy(vector<int>tab, int element){
+    for(int i=0;i<tab.size();i++){
+        if(tab[i] == element){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool czyzawiera(vector<int>tab1, vector<int>tab2){
+    for(int i=0;i<tab2.size();i++){
+        if(!czynalezy(tab1, tab2[i])){
+            return false;
+        }
+    }
+    return true;
+}
+
+vector<int> unikalnosc(vector<int>tab){
+    vector<int>wynik;
+    for(int i=0;i<tab.size();i++){
+        if(!czynalezy(wynik, tab[i])){
+            wynik.push_back(tab[i]);
+        }
+    }
+    return wynik;
+}
+
+int sumowanie(vector<int>tab){
+    int wynik =0;
+    for(int i=0;i<tab.size();i++){
+        wynik+=tab[i];
+    }
+    return wynik;
+}
+
+float avg(vector<int>tab){
+    float wynik = sumowanie(tab);
+    return wynik/tab.size();
+}
+
+vector<int> podzielnosc(vector<int>tab, int dzielnik, int reszta=0){
+    vector<int>wynik;
+    for(int i=0;i<tab.size();i++){
+        if(tab[i]%dzielnik==reszta){
+            wynik.push_back(tab[i]);
+        }
+    }
+    return wynik;
+}
+
+int main()
+{
+    vector<int>tab1 = {5,3,2,2,6,5,4,7,8};
+    vector<int>tab2 = {5,6,8};
+    
+    int element = 2;
+    
+    wypisz(tab1);
+    cout << max(tab1) << endl;
+    cout << czynalezy(tab1, element) << endl;
+    cout << czynalezy(tab2, element) << endl;
+    cout << czyzawiera(tab1, tab2) << endl;
+
+    vector<int>tab1u = unikalnosc(tab1);
+    wypisz(tab1u);
+    
+    cout << sumowanie(tab1) << endl;
+    cout << avg(tab1) << endl;
+    
+    vector<int>tab1p = podzielnosc(tab1, 2);
+    wypisz(tab1p);
+    
+    return 0;
+}
+
+// 1.wymyśl przykład
+// 2.czy przykład jest kompletny
+// 3.sformalizuj parametrów
+// 4.sformalizuj przykład
+// 5.nagłówek funkcji
+// 6. nie wiesz co robić wróc do przykładu
