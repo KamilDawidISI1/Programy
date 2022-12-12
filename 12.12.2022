@@ -1,1 +1,100 @@
+#include <iostream>
+#include <vector>
+#include <map>
+
+using namespace std;
+
+void wypisz(vector<int>tab) {
+    for (int i = 0; i < tab.size(); i++) {
+        cout << tab[i] << ", ";
+    }
+    cout << endl;
+}
+
+int max(vector<int>tab) {
+    int wynik = tab[0];
+    for (int i = 1; i < tab.size(); i++) {
+        if (tab[i] > wynik) {
+            wynik = tab[i];
+        }
+    }
+    return wynik;
+}
+
+bool czyNalezy(vector<int>tab, int element) {
+    for (int i = 0; i < tab.size(); i++) {
+        if (tab[i] == element) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool czyZawiera(vector<int>tab1, vector<int>tab2) {
+    for (int i = 0; i < tab2.size(); i++) {
+        if (!czyNalezy(tab1, tab2[i])) {
+            return false;
+        }
+    }
+    return true;
+
+}
+
+vector<int> unikalnosc(vector<int>tab)
+{
+    vector<int>wynik;
+
+    for (int i = 0; i < tab.size(); i++) {
+        if (!czyNalezy(wynik, tab[i])) {
+            wynik.push_back(tab[i]);
+        }
+    }
+
+    return wynik;
+}
+
+int sumowanie(vector<int>tab) {
+    int wynik = 0;
+    for (int i = 0; i < tab.size(); i++) {
+        wynik += tab[i];
+    }
+    return wynik;
+}
+
+float srednia(vector<int>tab) {
+    float wynik = sumowanie(tab);
+    return wynik / tab.size();
+}
+
+vector<int> podzielnosc(vector<int>tab, int dzielnik, int reszta = 0) {
+    vector<int>wynik;
+    for (int i = 0; i < tab.size(); i++) {
+        if (tab[i] % dzielnik == reszta) {
+            wynik.push_back(tab[i]);
+        }
+    }
+    return wynik;
+}
+
+
+int main()
+{
+	cout << "12.12.2022\n";
+
+    vector<int>tab = { 8,7,1,2,2,7,8,7,2 };
+
+    map<int, int> m;
+    m.insert({ 8, 2 });
+    m.insert({ 7, 3 });
+    m.insert({ 1, 1 });
+    m.insert({ 2, 3 });
+
+    for (auto& el : m) {
+        cout << el.first << ": ";
+        cout << el.second << ", ";
+    }
+
+}
+
+//na wejściówkę to co było tydzień tej pory + to co na zdjęciu w telefonie funkcja map 
 
