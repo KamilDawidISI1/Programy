@@ -1,0 +1,123 @@
+#include <iostream>
+#include <vector>
+#include <map>
+
+using namespace std;
+
+void wypisz(vector<int>tab) {
+    int i=0;
+    while(i < tab.size()) {
+        cout << tab[i] << ", ";
+        i++;
+    }
+    cout << endl;
+}
+
+int max(vector<int>tab) {
+    int wynik = tab[0];
+    int i =1;
+    while(i < tab.size()) {
+        if (tab[i] > wynik) {
+            wynik = tab[i];
+        }
+        i++;
+    }
+    return wynik;
+}
+
+bool czyNalezy(vector<int>tab, int element) {
+    int i = 0;
+    while(i < tab.size()) {
+        if (tab[i] == element) {
+            return true;
+        }
+        i++;
+    }
+    return false;
+}
+
+bool czyZawiera(vector<int>tab1, vector<int>tab2) {
+    int i = 0;
+    while (i < tab2.size()) {
+        if (!czyNalezy(tab1, tab2[i])) {
+            return false;
+        }
+        i++;
+    }
+    return true;
+
+}
+
+vector<int> unikalnosc(vector<int>tab)
+{
+    vector<int>wynik;
+    int i = 0;
+    while (i < tab.size()) {
+        if (!czyNalezy(wynik, tab[i])) {
+            wynik.push_back(tab[i]);
+        }
+        i++;
+    }
+
+    return wynik;
+}
+
+int sumowanie(vector<int>tab) {
+    int wynik = 0;
+    int i = 0;
+    while (i < tab.size()) {
+        wynik += tab[i];
+        i++;
+    }
+    return wynik;
+}
+
+float srednia(vector<int>tab) {
+    float wynik = sumowanie(tab);
+    return wynik / tab.size();
+}
+
+vector<int> podzielnosc(vector<int>tab, int dzielnik, int reszta = 0) {
+    vector<int>wynik;
+    int i=0;
+    while (i < tab.size()) {
+        if (tab[i] % dzielnik == reszta) {
+            wynik.push_back(tab[i]);
+        }
+        i++;
+    }
+    return wynik;
+}
+
+
+int main()
+{
+	cout << "12.12.2022\n";
+
+    vector<int>tab = { 8,7,1,2,2,7,8,7,2 };
+    vector<int>tab1 = {8,1,2};
+    int element = 7;
+    
+    wypisz(tab);
+    cout << max(tab) << endl;
+    cout << czyNalezy(tab, element) << endl;
+    cout << czyNalezy(tab1, element) << endl;
+    cout << czyZawiera(tab, tab1) << endl;
+    wypisz(unikalnosc(tab));
+    wypisz(podzielnosc(tab, 2));
+    
+
+    map<int, int> m;
+    m.insert({ 8, 2 });
+    m.insert({ 7, 3 });
+    m.insert({ 1, 1 });
+    m.insert({ 2, 3 });
+
+    for (auto& el : m) {
+        cout << el.first << ": ";
+        cout << el.second << ", ";
+    }
+    
+    return 0;
+
+}
