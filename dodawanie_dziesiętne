@@ -1,0 +1,53 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+
+void wypisz(vector<int>tab) {
+    for (int i = 0; i < tab.size(); i++) {
+        cout << tab[i] << ", ";
+    }
+    cout << endl;
+}
+
+vector<int> intdov(int liczba) {
+    vector<int>wynik;
+    do{
+        wynik.push_back(liczba % 10);
+        liczba /= 10;
+    } while (liczba > 0);
+    return wynik;
+}
+
+vector<int>sumadzies(vector<int>a, vector<int>b)
+{
+    vector<int> zwrot;
+    int przenies = 0;
+    for (int i = 0; i < a.size(); i++) {
+        int dodaj = a[i] + b[i] + przenies;
+        zwrot.push_back(dodaj % 10);
+        przenies = dodaj / 10;
+    }
+    if (przenies > 0) {
+        zwrot.push_back(przenies);
+    }
+    
+    return zwrot;
+}
+
+int main()
+{
+    int l1 = 453;
+    int l2 = 154;
+
+    vector<int>konl1 = intdov(l1);
+    vector<int>konl2 = intdov(l2);
+
+    wypisz(konl1);
+    wypisz(konl2);
+    
+    vector<int>l12 = sumadzies(konl1, konl2);
+    wypisz(l12);
+    
+}
