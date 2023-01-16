@@ -27,3 +27,41 @@ int main()
 
 
 }
+
+
+------------------------------
+z cin
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string bezlitery(char znak, string wyraz) {
+    string wynik;
+
+    for (int i = 0; i < wyraz.length(); i++) {
+        if (znak != wyraz[i]) {
+            wynik.push_back(wyraz[i]);
+        }
+    }
+
+    return wynik;
+}
+
+
+int main()
+{
+    char znak;
+    cin >> znak;
+    cin.ignore();
+    string wyraz;
+    getline(cin, wyraz);
+    
+    cout << wyraz << endl;
+
+    string wyrazbez = bezlitery(znak, wyraz);
+    cout << wyrazbez;
+
+
+}
