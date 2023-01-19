@@ -1,0 +1,278 @@
+potegowanie:
+#include <iostream>
+
+using namespace std;
+
+double poteganie(double liczba, int potega) {
+    double wynik = 1;
+    if (potega < 0) {
+        cout << "n nie spelnia warunkow";
+    }
+    else if (potega == 0) {
+        return wynik;
+    }
+    else {
+        for (int i = 0; i < potega; i++) {
+            wynik *= liczba;
+        }
+        return wynik;
+    }
+    
+}
+
+int main()
+{
+    double liczba = 2;
+    int potega = 10;
+
+    cout << poteganie(liczba, potega);
+
+}
+--------------------------------------------
+generator liczb pierwszych
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+void genliczbpierwszych(int n) {
+    int l, pom, pzl;
+    bool czypierwsza;
+    pom = 0;
+    l = 2;
+
+    while (pom < n)
+    {
+        czypierwsza = true;
+        pzl = sqrt(l);
+        for (int i = 2; i <= pzl; i++) {
+            if (l % i == 0) {
+                czypierwsza = false;
+                break;
+            }
+        }
+        if (czypierwsza) {
+            cout << l << " ";
+            pom++;
+        }
+        l++;
+    }
+}
+
+int main()
+{
+    int n;
+
+    cout << "Ile liczb pierwszych wygenerowac: ";
+    cin >> n;
+    if (n < 0) {
+        cout << "Jak mam ci wygenerowac ujemna ilosc liczb????";
+        return 0;
+    }
+    cout << endl;
+    genliczbpierwszych(n);
+    cout << endl;
+
+    return 0;
+}
+--------------------------------------------
+
+czy palindrom
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void wypisz(vector<int>tab) {
+    for (int i = 0; i < tab.size(); i++) {
+        cout << tab[i] << " ";
+    }
+    cout << endl;
+}
+
+vector<int> liczbanavector(int liczba) {
+    vector<int>wynik;
+    while (liczba > 0) {
+        wynik.push_back(liczba % 10);
+        liczba /= 10;
+    }
+    return wynik;
+}
+
+void czypalindrom(int liczba, vector<int>tab) {
+    reverse(tab.begin(), tab.end());
+    wypisz(tab);
+    if (liczbanavector(liczba) == tab)
+        cout << "Tak jest palindromem";
+    else
+        cout << "Nie jest palindromem";
+}
+
+
+
+
+int main()
+{
+    int liczba = 82325;
+    vector<int>tab = liczbanavector(liczba);
+    wypisz(tab);
+    czypalindrom(liczba, tab);
+
+}
+
+---------------------------------------------------
+te drzewko:
+
+#include <iostream>
+using namespace std;
+
+void foo(int w) {
+    int n = 0;
+    int l = 2;
+    for (int i = 1; i <= w; i++) {
+        for (int j = 1; j <= 1 + n; j++) {
+            cout << l * j << " ";
+        }
+        n++;
+        l *= 2;
+        cout << endl;
+    }
+}
+
+int main()
+{
+    foo(7);
+}
+---------------------------
+sumamax:
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int maxsuma(vector<int>tab) {
+    int suma = 0;
+    int max = 0;
+    for (int i = 0; i < tab.size(); i++) {
+        for (int j = i; j < tab.size(); j++) {
+            suma += tab[j];  
+        }
+        if (suma > max) {
+            max = suma;
+        }
+        suma = 0;
+        
+    }
+    return max;
+}
+
+int main()
+{
+    vector<int>tab = { 2, 4, -6, 7 };
+
+    cout << maxsuma(tab);
+}
+----------------------------
+suma warunkowa
+using namespace std;
+
+void wypisz(vector<int>tab)
+{
+    for (int i = 0; i < tab.size(); i++) {
+        cout << tab[i] << ", ";
+    }
+    cout << endl;
+}
+
+int warunkowasuma(vector<int>tab, int a, int b) {
+    int suma = 0;
+    for (int i = 0; i < tab.size(); i++) {
+        if (tab[i] % a == 0 && tab[i] < b) {
+            suma += tab[i];
+        }
+    }
+    return suma;
+}
+
+int main()
+{
+    int a, b, n;
+    vector<int>tab;
+    cout << "Podaj dlugosc wektora: "; cin >> n;
+    cout << "Przez jaka liczbe maja sie dzielic: "; cin >> a;
+    cout << "Od jakiej liczby maja byc mniejsze: "; cin >> b;
+    int c;
+    cout << "Podaj liczby do wektora: " << endl;
+    for (int i = 0; i < n; i++) {
+        cout << i + 1 << ". liczba: "; cin >> c;
+        tab.push_back(c);
+    }
+
+    wypisz(tab);
+
+    cout << "Suma warunkowa = " << warunkowasuma(tab, a, b);
+}
+
+---------------------------
+potega
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int podstawa_potegi(int x) {
+    int podstawa = 0;
+    for (int i = 2; i < x; i++) {
+        for (int j = i; j <= x; j = j * i) {
+            if (j % x == 0) {
+                podstawa = i;
+                if (podstawa > 0) {
+                    return podstawa;
+                }
+            }
+        }
+    }
+    if (podstawa == 0)
+        return 0;
+}
+
+void potega(int x) {
+    int podstawa = podstawa_potegi(x);
+    int wynik = 1;
+    int licznik = 0;
+    
+    for (int i = 1; i < x; i++) {
+        if(pow(podstawa, i) == x) {
+            licznik = i;
+        }
+    }
+    if (podstawa == 0) {
+        cout << "NIE";
+    }
+    else {
+        cout << "Wynik y=" << podstawa << ", n=" << licznik << ", bo " << podstawa << "^" << licznik << "=" << x;
+    }
+}
+
+int main()
+{
+    int a;
+    cout << "Podaj liczbe: "; cin >> a;
+    
+    potega(a);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
